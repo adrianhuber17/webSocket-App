@@ -10,7 +10,7 @@
     <h1>Flask App</h1>
     <input type="text" />
     <button>submit</button>
-    <ol id="demo"></ol>
+    <p></p>
   </body>
   <script
     src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"
@@ -20,28 +20,23 @@
   <script type="text/javascript" charset="utf-8">
     var socket = io({ transports: ["websocket"] });
 
-    socket.on("connect", () => {
+    socket.on("connect", function (data) {
+      // console.log("client connected", socket.connected);
       console.log("client connected", socket.connected);
-      // socket.emit("message", "Client Connected");
-      // socket.on("message", (data) => {
-      //   console.log(data);
-      // });
+      console.log(data);
     });
-
+    let tempDatas;
     function handleClick() {
       const text = document.querySelector("input");
       if (text.value) {
-        socket.emit("message", text.value);
-        socket.on("message", (data) => {
-          console.log(data);
-          const list = document.getElementById("demo");
-          const entry = document.createElement("li");
-          entry.appendChild(document.createTextNode(data));
-          list.appendChild(entry);
-        });
+        socket.emit("data", text.value);
         document.querySelector("input").value = "";
       }
     }
+    socket.on("data", (data) => {
+      console.log(data);
+      document.querySelector("p").append(data);
+    });
 
     document.querySelector("button").addEventListener("click", handleClick);
   </script>

@@ -10,14 +10,14 @@ def hello_world():
     return render_template("index.html") 
 
 @socketio.on("connect")
-def connecte():
-    print("connected to the client")
-    emit("message", "Server connected")
+def connected(data):
+    print("client has connected")
+    emit("connect", "server has connected")
 
-@socketio.on('message')
+@socketio.on('data')
 def handle_message(data):
     print(str(data))
-    emit("message", data,broadcast=True)
+    emit("data",data,broadcast=True)
 
 # socketio.on("chat")
 # def handle_text(msg):
