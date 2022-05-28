@@ -20,9 +20,11 @@ def handle_message(data):
     print("data from the front end: ",str(data))
     emit("data",{'data':data,'id':request.sid},broadcast=True,include_self=False)
 
+@socketio.on("disconnect")
+def disconnected():
+
+    print("user disconnected")
+    emit("disconnected_user","user disconnected",broadcast=True)
 
 if __name__ == '__main__':
     socketio.run(app, debug=True)
-
-
-#https://www.youtube.com/watch?v=8ARodQ4Wlf4
