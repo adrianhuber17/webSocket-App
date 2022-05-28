@@ -9,11 +9,19 @@ socketio = SocketIO(app)
 def hello_world():
     return render_template("index.html") 
 
+@socketio.on("connect")
+def connecte():
+    print("connected to the client")
+    emit("message", "Server connected")
+
 @socketio.on('message')
 def handle_message(data):
-    print('------received message: you are connected-----')
     print(str(data))
-    emit("message", {'data': 42})
+    emit("message", data,broadcast=True)
+
+# socketio.on("chat")
+# def handle_text(msg):
+#     print(msg)
 
 if __name__ == '__main__':
     socketio.run(app, debug=True)

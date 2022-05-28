@@ -10,6 +10,7 @@
     <h1>Flask App</h1>
     <input type="text" />
     <button>submit</button>
+    <ol id="demo"></ol>
   </body>
   <script
     src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"
@@ -18,12 +19,30 @@
   ></script>
   <script type="text/javascript" charset="utf-8">
     var socket = io({ transports: ["websocket"] });
+
     socket.on("connect", () => {
-      console.log(socket.connected); // true
+      console.log("client connected", socket.connected);
+      // socket.emit("message", "Client Connected");
+      // socket.on("message", (data) => {
+      //   console.log(data);
+      // });
     });
-    socket.emit("message", "test");
-    socket.on("message", (data) => {
-      console.log("received from flask", data.data);
-    });
+
+    function handleClick() {
+      const text = document.querySelector("input");
+      if (text.value) {
+        socket.emit("message", text.value);
+        socket.on("message", (data) => {
+          console.log(data);
+          const list = document.getElementById("demo");
+          const entry = document.createElement("li");
+          entry.appendChild(document.createTextNode(data));
+          list.appendChild(entry);
+        });
+        document.querySelector("input").value = "";
+      }
+    }
+
+    document.querySelector("button").addEventListener("click", handleClick);
   </script>
 </html>
