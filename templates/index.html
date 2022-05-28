@@ -10,6 +10,7 @@
     <h1>Flask App</h1>
     <input type="text" />
     <button>submit</button>
+    <h2></h2>
     <p></p>
   </body>
   <script
@@ -20,10 +21,10 @@
   <script type="text/javascript" charset="utf-8">
     var socket = io({ transports: ["websocket"] });
 
-    socket.on("connect", function (data) {
-      // console.log("client connected", socket.connected);
-      console.log("client connected", socket.connected);
-      console.log(data);
+    socket.on("connect", () => {
+      socket.on("server_connected", (data) => {
+        console.log(data.data);
+      });
     });
     let tempDatas;
     function handleClick() {
@@ -35,7 +36,8 @@
     }
     socket.on("data", (data) => {
       console.log(data);
-      document.querySelector("p").append(data);
+      document.querySelector("p").append(data.data);
+      document.querySelector("h2").append(`user: ${data.id}`);
     });
 
     document.querySelector("button").addEventListener("click", handleClick);

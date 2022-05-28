@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template,request
 from flask_socketio import SocketIO,emit,send
 
 app = Flask(__name__)
@@ -10,18 +10,16 @@ def hello_world():
     return render_template("index.html") 
 
 @socketio.on("connect")
-def connected(data):
+def connected():
+    print(request.sid)
     print("client has connected")
-    emit("connect", "server has connected")
+    emit("server_connected",{"data":f"id: {request.sid} is connected"})
 
 @socketio.on('data')
 def handle_message(data):
-    print(str(data))
-    emit("data",data,broadcast=True)
+    print("data from the front end: ",str(data))
+    emit("data",{'data':data,'id':request.sid},broadcast=True,include_self=False)
 
-# socketio.on("chat")
-# def handle_text(msg):
-#     print(msg)
 
 if __name__ == '__main__':
     socketio.run(app, debug=True)
