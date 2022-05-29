@@ -7,10 +7,6 @@ app.config['SECRET_KEY'] = 'secret!'
 CORS(app,resources={r"/*":{"origins":"*"}})
 socketio = SocketIO(app,cors_allowed_origins="*")
 
-@app.route("/")
-def hello_world():
-    return render_template("index.html") 
-
 @app.route("/http-call")
 def http_call():
     data = {'data':'http api call'}
@@ -25,7 +21,7 @@ def connected():
 @socketio.on('data')
 def handle_message(data):
     print("data from the front end: ",str(data))
-    emit("data",{'data':data,'id':request.sid},broadcast=True,include_self=False)
+    emit("data",{'data':data,'id':request.sid},broadcast=True)
 
 @socketio.on("disconnect")
 def disconnected():

@@ -1,13 +1,15 @@
 import "./App.css";
 import HttpCall from "./components/HttpCall";
+import WebSocketCall from "./components/WebSocketCall";
 import { io } from "socket.io-client";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 function App() {
-  // const [room, setRoom] = useState("");
+  const [socketInstance, setSocketInstance] = useState("");
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    io("localhost:5000/", {
+    const socket = io("localhost:5000/", {
       withCredentials: true,
       transports: ["websocket"],
       cors: {
@@ -15,15 +17,21 @@ function App() {
         credentials: true,
       },
     });
+    setSocketInstance(socket);
+    socket.on("connect", () => {
+      socket.on("server_connected", (data) => {
+        console.log(data.data);
+      });
+    });
+    setLoading(false);
   }, []);
   return (
     <div className="App">
       <h1>React App</h1>
       <HttpCall />
+      {!loading && <WebSocketCall socket={socketInstance} />}
     </div>
   );
 }
 
 export default App;
-
-// #https://www.youtube.com/watch?v=tPKyDM0qEB8

@@ -7,7 +7,6 @@ export default function HttpCall() {
     fetch("/http-call", {
       headers: {
         "Content-Type": "application/json",
-        // 'Content-Type': 'application/x-www-form-urlencoded',
       },
     })
       .then((response) => response.json())
@@ -15,5 +14,5 @@ export default function HttpCall() {
         setData(responseData.data);
       });
   });
-  return <h2>{data}</h2>;
+  return <h2>Regular API Fetch: {data}</h2>;
 }
