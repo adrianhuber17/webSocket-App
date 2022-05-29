@@ -4,7 +4,6 @@ from flask_cors import CORS
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'secret!'
-# app.config['CORS_HEADERS'] = ['Access-Control-Allow-Headers']
 CORS(app,resources={r"/*":{"origins":"*"}})
 socketio = SocketIO(app,cors_allowed_origins="*")
 
