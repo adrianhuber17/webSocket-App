@@ -1,13 +1,21 @@
-from flask import Flask, render_template,request
+from flask import Flask, render_template,request,jsonify
 from flask_socketio import SocketIO,emit,send
+from flask_cors import CORS
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'secret!'
-socketio = SocketIO(app)
+# app.config['CORS_HEADERS'] = ['Access-Control-Allow-Headers']
+CORS(app,resources={r"/*":{"origins":"*"}})
+socketio = SocketIO(app,cors_allowed_origins="*")
 
 @app.route("/")
 def hello_world():
     return render_template("index.html") 
+
+@app.route("/http-call")
+def http_call():
+    data = {'data':'http api call'}
+    return jsonify(data)
 
 @socketio.on("connect")
 def connected():
