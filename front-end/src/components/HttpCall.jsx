@@ -16,11 +16,8 @@ export default function HttpCall() {
   });
   return (
     <>
-      <h1>HTTP Communication</h1>
-      <h2>
-        This text was fetched using an HTTP call to server on render:{" "}
-        <p>{data}</p>
-      </h2>
+      <h2>HTTP Communication</h2>
+      <h3 className="http">{data}</h3>
     </>
   );
 }

@@ -9,7 +9,7 @@ socketio = SocketIO(app,cors_allowed_origins="*")
 
 @app.route("/http-call")
 def http_call():
-    data = {'data':'data fetched from server'}
+    data = {'data':'This text was fetched using an HTTP call to server on render'}
     return jsonify(data)
 
 @socketio.on("connect")
