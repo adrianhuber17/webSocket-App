@@ -14,5 +14,13 @@ export default function HttpCall() {
         setData(responseData.data);
       });
   });
-  return <h2>Regular API Fetch: {data}</h2>;
+  return (
+    <>
+      <h1>HTTP Communication</h1>
+      <h2>
+        This text was fetched using an HTTP call to server on render:{" "}
+        <p>{data}</p>
+      </h2>
+    </>
+  );
 }

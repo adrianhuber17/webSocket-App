@@ -27,8 +27,10 @@ function App() {
   }, []);
   return (
     <div className="App">
-      <h1>React App</h1>
+      <h1>React/Flask App (socket.io)</h1>
+      <div className="line"></div>
       <HttpCall />
+      <div className="line"></div>
       {!loading && <WebSocketCall socket={socketInstance} />}
     </div>
   );

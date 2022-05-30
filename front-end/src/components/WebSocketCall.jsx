@@ -25,6 +25,7 @@ export default function WebSocketCall({ socket }) {
 
   return (
     <div>
+      <h1>WebSocket Communication</h1>
       <input type="text" value={message} onChange={handleText} />
       <button onClick={handleSubmit}>submit</button>
       <ul>
