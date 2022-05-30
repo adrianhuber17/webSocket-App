@@ -1,11 +1,11 @@
 # Simple ReactJS + Flask App using WebSockets (socket.io)
 
-This simple App connects a Server (Flask) and a Client (React)
+This simple App connects a Flask server and a React client
 and opens a two way interactive communication using WebSocket technology with the socket.io library.
 With WebSockets you can send messages to a server and receive event driven responses without having
 to poll a server.
 
-This repo was created to help users create WebSocket communication protocols, and regular HTTP communication with a Python Flask Server and a Javascript React Client.
+This repo was created to help users create WebSocket communication protocols along with regular HTTP communication using a Python Flask server and a Javascript React client.
 
 ## Tech Stack
 
@@ -27,7 +27,7 @@ After installation please follow the instructions below to download the repo.
   git clone https://github.com/adrianhuber17/webSocket-App.git
 ```
 
-- Navigate into the new sub-folder created called 'WebSocket-App'.
+- Navigate into the new sub-folder created called **WebSocket-App**.
 - Run the following commands to create an environment:
 
 ```bash
@@ -36,7 +36,7 @@ After installation please follow the instructions below to download the repo.
   pip install -r requirements.txt
 ```
 
-- Navigate into 'front-end' folder and run the following command:
+- Navigate into **front-end** folder and run the following command:
 
 ```bash
   npm i react-scripts
@@ -45,33 +45,30 @@ After installation please follow the instructions below to download the repo.
 ## Run Locally
 
 Open 2 terminal windows, one to be used by the server with Python and the other
-will be used by the Client with React.
-Make sure Server is initialized before Client to avoid any issues.
+will be used by the client with React.
+Make sure the server is initialized before the client to avoid any issues.
 
-Terminal 'window 1' start Server:
+Terminal **window 1** - start the server:
 
 ```bash
-  cd 'local-folder-name'
   cd webSocket-App
   source env/bin/activate
   python3 server.py
 ```
 
-Terminal 'window 2' start Client:
+Terminal **window 2** - start the client:
 
 ```bash
-  cd 'local-folder-name'
-  cd webSocket-App
-  cd front-end
+  cd webSocket-App/front-end
   npm start
 ```
 
 ## Demo
 
 The browser on the left is Google Chrome and the Browser on the right is Firefox.
-The demo below displays in red a simple fetch to the server that was executed on the rendering of the page using an http call.
-It also displays a chat communication between 2 users in the server using WebSocket communication. Notice that when a message is sent by one
-user, the other user receives the message without having to re-render the component or page.
+The demo below displays in **red** a simple fetch to the server that executes on the rendering of the page using an http call.
+It also displays a chat communication between two users in the server using WebSocket communication. Notice that when a message is sent by one
+user, the other user receives the message without having to re-render the component or the page.
 
 ![](/demo_app.gif)
 
