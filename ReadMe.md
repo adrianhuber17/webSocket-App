@@ -1,6 +1,6 @@
 # Simple ReactJS + Flask App using WebSockets (socket.io)
 
-This simple App connects a Flask server and a React client
+This simple App connects a Flask server to a React client
 and opens a two way interactive communication using WebSocket technology with the socket.io library.
 With WebSockets you can send messages to a server and receive event driven responses without having
 to poll a server.
@@ -18,17 +18,16 @@ This repo was created to help users create WebSocket communication protocols alo
 Make sure you have installed Node.js, npm, Python3, and pip.
 After installation please follow the instructions below to download the repo.
 
-- Create folder in your local drive.
-- Copy link: https://github.com/adrianhuber17/webSocket-App.git
-- Open terminal and navigate to folder created.
-- Run the following commands in the terminal under the folder created:
+- Within the terminal window, create a folder in your local drive.
+- Navigate to the folder created.
+- Run the following command:
 
 ```bash
   git clone https://github.com/adrianhuber17/webSocket-App.git
 ```
 
 - Navigate into the new sub-folder created called **WebSocket-App**.
-- Run the following commands to create an environment:
+- Run the following commands to create an environment and install the dependencies:
 
 ```bash
   python3 -m venv env
@@ -36,7 +35,7 @@ After installation please follow the instructions below to download the repo.
   pip install -r requirements.txt
 ```
 
-- Navigate into **front-end** folder and run the following command:
+- Navigate into the /**front-end** folder and run the following command:
 
 ```bash
   npm i react-scripts
@@ -44,8 +43,8 @@ After installation please follow the instructions below to download the repo.
 
 ## Run Locally
 
-Open 2 terminal windows, one to be used by the server with Python and the other
-will be used by the client with React.
+Open two terminal windows, one to be used by the Flask server and the other
+to be used by the React client.
 Make sure the server is initialized before the client to avoid any issues.
 
 Terminal **window 1** - start the server:
