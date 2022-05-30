@@ -9,7 +9,7 @@ function App() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const socket = io("localhost:5000/", {
+    const socket = io("localhost:5001/", {
       withCredentials: true,
       transports: ["websocket"],
       cors: {
