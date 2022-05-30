@@ -21,14 +21,14 @@ After installation please follow the instructions below to download the repo.
 - Create folder in your local drive.
 - Copy link: https://github.com/adrianhuber17/webSocket-App.git
 - Open terminal and navigate to folder created.
-- Type the following commands in the terminal under the folder created:
+- Run the following commands in the terminal under the folder created:
 
 ```bash
   git clone https://github.com/adrianhuber17/webSocket-App.git
 ```
 
 - Navigate into the new sub-folder created called 'WebSocket-App'.
-- Type the following commands to create an environment:
+- Run the following commands to create an environment:
 
 ```bash
   python3 -m venv env
@@ -36,7 +36,7 @@ After installation please follow the instructions below to download the repo.
   pip install -r requirements.txt
 ```
 
-- Navigate into 'front-end' folder and type the following command:
+- Navigate into 'front-end' folder and run the following command:
 
 ```bash
   npm i react-scripts
@@ -69,7 +69,7 @@ Terminal 'window 2' start Client:
 ## Demo
 
 The browser on the left is Google Chrome and the Browser on the right is Firefox.
-The demo below displays in 'red' a simple fetch to the server that was executed on the rendering of the page using an http call.
+The demo below displays in red a simple fetch to the server that was executed on the rendering of the page using an http call.
 It also displays a chat communication between 2 users in the server using WebSocket communication. Notice that when a message is sent by one
 user, the other user receives the message without having to re-render the component or page.
 
