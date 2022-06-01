@@ -16,13 +16,17 @@ function App() {
       },
     });
     setSocketInstance(socket);
-    socket.on("connect", () => {
-      socket.on("server_connected", (data) => {
-        console.log(data.data);
-      });
+    socket.on("connect", (data) => {
+      console.log(data);
     });
     setLoading(false);
   }, []);
+  if (socketInstance !== "") {
+    socketInstance.on("disconnect", (data) => {
+      console.log(data);
+    });
+  }
+
   return (
     <div className="App">
       <h1>React/Flask App + socket.io</h1>

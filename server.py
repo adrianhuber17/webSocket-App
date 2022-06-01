@@ -16,7 +16,7 @@ def http_call():
 def connected():
     print(request.sid)
     print("client has connected")
-    emit("server_connected",{"data":f"id: {request.sid} is connected"})
+    emit("connect",{"data":f"id: {request.sid} is connected"})
 
 @socketio.on('data')
 def handle_message(data):
@@ -27,7 +27,7 @@ def handle_message(data):
 def disconnected():
 
     print("user disconnected")
-    emit("disconnected_user","user disconnected",broadcast=True)
+    emit("disconnect","user disconnected",broadcast=True)
 
 if __name__ == '__main__':
     socketio.run(app, debug=True,port=5001)
