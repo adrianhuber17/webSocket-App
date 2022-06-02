@@ -21,6 +21,11 @@ export default function WebSocketCall({ socket }) {
     socket.on("data", (data) => {
       setMessages([...messages, data.data]);
     });
+    return () => {
+      socket.off("data", () => {
+        console.log("data event was removed");
+      });
+    };
   }, [socket, messages]);
 
   return (
