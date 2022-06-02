@@ -30,7 +30,7 @@ def handle_message(data):
 def disconnected():
     """event listener when client disconnects to the server"""
     print("user disconnected")
-    emit("disconnect","user disconnected",broadcast=True)
+    emit("disconnect",f"user {request.sid} disconnected",broadcast=True)
 
 if __name__ == '__main__':
     socketio.run(app, debug=True,port=5001)
