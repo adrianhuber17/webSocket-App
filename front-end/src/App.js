@@ -38,18 +38,16 @@ function App() {
 
       setLoading(false);
 
+      //send message to server and all other clients that a user has disconnected
+      socket.on("disconnect", (data) => {
+        console.log(data);
+      });
+
       return function cleanup() {
         socket.disconnect();
       };
     }
   }, [buttonStatus]);
-
-  //send message to server and all other clients that a user has disconnected
-  if (socketInstance !== "") {
-    socketInstance.on("disconnect", (data) => {
-      console.log(data);
-    });
-  }
 
   return (
     <div className="App">
