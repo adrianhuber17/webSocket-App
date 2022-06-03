@@ -69,7 +69,7 @@ The demo below displays in **red** a simple fetch to the server that executes on
 It also displays a chat communication between two users in the server using WebSocket communication. Notice that when a message is sent by one
 user, the other user receives the message without having to re-render the component or the page.
 
-![](/appDemo.gif)
+![](/applicationDemo.gif)
 
 You will notice in the code that I manually set Flask to run on PORT 5001 instead of the usual PORT 5000.
 This is because AirPlay in Apple is also running on PORT 5000 and it was making it difficult for Flask and React to connect
